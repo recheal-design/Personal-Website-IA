@@ -1,0 +1,150 @@
+/* --- New Animation: Subtle Background Movement --- */
+@keyframes bgTransition {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body{
+    font-family: Arial, sans-serif;
+    /* Changed background to slow-moving gradient */
+    background: linear-gradient(-45deg, #f4f4f4, #e0f2ff, #f4f4f4, #e0f2ff); 
+    background-size: 400% 400%; 
+    animation: bgTransition 20s ease infinite; 
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background: #0066cc;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav{
+    background: #003366;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a{
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    /* Added for hover animation */
+    transition: transform 0.2s ease-in-out; 
+    display: inline-block; 
+}
+
+nav a:hover{
+    color: #ffd700;
+    /* New hover animation */
+    transform: scale(1.1); 
+}
+
+.container{
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* --- Image Pulsing Glow (Criterion 2: Flash Alternative) --- */
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 5px rgba(0, 102, 204, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(0, 102, 204, 0.8), 0 0 30px rgba(255, 215, 0, 0.4); }
+    100% { box-shadow: 0 0 5px rgba(0, 102, 204, 0.5); }
+}
+
+/* FIX APPLIED: Targets "myphoto" now */
+.container img[src*="myphoto"] { 
+    border: 5px solid #0066cc; 
+    border-radius: 50%; 
+    animation: glowPulse 3s infinite ease-in-out; 
+    transition: transform 3s ease-in-out; 
+}
+
+.container img[src*="myphoto"]:hover {
+    transform: scale(1.05);
+}
+
+/* Text Fade-in Animation */
+.fade-in-text{
+    animation: fadeIn 1s ease-in-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* --- New Page-Specific Entrance Animations (for Portfolio, Biodata, etc.) --- */
+
+/* 1. Biodata: Zoom & Rotate In Animation */
+@keyframes zoomRotateIn {
+    0% { opacity: 0; transform: scale(0.1) rotate(-90deg); }
+    75% { opacity: 1; transform: scale(1.05) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+.zoom-rotate-in {
+    animation: zoomRotateIn 2s ease-out forwards;
+}
+
+/* 2. Portfolio: Wiggle Down Entrance Animation */
+@keyframes wiggleDown {
+    0% { opacity: 0; transform: translateY(-80px); }
+    60% { opacity: 1; transform: translateY(10px); }
+    80% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+.wiggle-down {
+    animation: wiggleDown 2s ease-out forwards;
+}
+
+/* 3. My Video: Zoom & Rotate In Animation*/
+@keyframes zoomRotateIn {
+    0% { opacity: 0; transform: scale(0.1) rotate(-90deg); }
+    75% { opacity: 1; transform: scale(1.05) rotate(5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+.zoom-rotate-in {
+    animation: zoomRotateIn 2s ease-out forwards;
+}
+
+/* 4. Comments: Wiggle Down Entrance Animation */
+@keyframes wiggleDown {
+    0% { opacity: 0; transform: translateY(-80px); }
+    60% { opacity: 1; transform: translateY(10px); }
+    80% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+.wiggle-down {
+    animation: wiggleDown 2s ease-out forwards;
+}
+
+/* --- Responsive Design Media Query (Objective 4) --- */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%; 
+        padding: 10px;
+    }
+
+    nav a {
+        display: block; 
+        margin: 5px 0;
+        border-bottom: 1px solid #003d73; 
+    }
+
+    table {
+        display: block;
+        overflow-x: auto; 
+        white-space: nowrap; 
+    }
+
+    .container img, video {
+        max-width: 100%;
+        height: auto;
+    }
+}
